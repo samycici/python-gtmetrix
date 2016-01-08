@@ -26,18 +26,18 @@ Change settings.py with your User and API Key:
     USER = your_user@email.com
     API_KEY= your_api_key
 
-If you don't have a user, create in the site https://gtmetrix.com
+If you don't have a user, you can sign up at https://gtmetrix.com
 
 Run analysis.py:
     
     python analysis.py
         
 
-When test is completed you able to access the results in two files:
+Once the test is completed, you will be able to access the results in two files:
 
     results-date and resources-date
     
-Which date refers to the current system date (dd-mm-yyyy).
+Where `date` refers to the current system date (dd-mm-yyyy).
 
 Example
     
@@ -48,7 +48,7 @@ Example
     site:google screenshot:https://gtmetrix.com/api/0.1/test/StLBexrb/screenshot har:https://gtmetrix.com/api/0.1/test/StLBexrb/har pagespeed_url:https://gtmetrix.com/api/0.1/test/StLBexrb/pagespeed pagespeed_files:https://gtmetrix.com/api/0.1/test/StLBexrb/pagespeed-files yslow_url:https://gtmetrix.com/api/0.1/test/StLBexrb/yslow  report_pdf:https://gtmetrix.com/api/0.1/test/StLBexrb/report-pdf report_pdf_full:https://gtmetrix.com/api/0.1/test/StLBexrb/report-pdf?full=1  
 
 
-List of available params and response attributes you can find at http://gtmetrix.com/api/
+You can find a list of the available params and response attributes at http://gtmetrix.com/api/
 
 
 Exceptions:
