@@ -63,7 +63,7 @@ The requested test doesn't exist
 
     GTmetrixTestNotFound 
     
-The maximum number of API calls reached 
+Maximum number of API calls reached 
     
     GTmetrixMaximumNumberOfApis 
     
