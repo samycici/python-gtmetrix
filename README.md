@@ -59,7 +59,7 @@ Invalid test request
     GTmetrixInvalidTestRequest
 
 
-The requested test does not exist
+The requested test doesn't exist
 
     GTmetrixTestNotFound 
     
