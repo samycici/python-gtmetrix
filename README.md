@@ -1,52 +1,51 @@
 python-gtmetrix
 ========================
 
-**python-gtmetrix** is a Python client library for GTmetrix REST API.
-
-Quickstart:
-========================
-
-Install package:
-
-    $ pip install python-gtmetrix
+**python-gtmetrix** is a Python client library for GTmetrix REST API created by https://github.com/aisayko/python-gtmetrix
+This is a sample project and was updated in January 2016 to address some needs:
+ - Read the test urls from a json
+ - Write the results in a txt file
+ 
+Run in Python 2.7.10 or higher
 
 
 Make tests:
 -----------
 
-Create json with urls:
+Change sites.json with the desired URLs:
     
     {
     "google": "http://google.com",
+    "facebook": "http://facebook.com"
     }
+   
 
-Start test using json with urls:
+Change settings.py with your User and API Key:
 
-    from gtmetrix import *
-    import json
+    GTMETRIX_REST_API_URL = 'https://gtmetrix.com/api/0.1/test'
+    USER = your_user@email.com
+    API_KEY= your_api_key
 
-    with open('sites.json') as data_file:
-    list_sites = json.load(data_file)
+If you don't have a user, create in the site https://gtmetrix.com
 
-    for key, value in list_sites.items():
-        print ("Site: %s - Url: %s" % (key, value))
-        gt = GTmetrixInterface('your@email.com', 'api-key')
-        my_test = gt.start_test(value)
+Run analysis.py:
+    
+    python analysis.py
         
 
-Fetch results:
+When test is completed you able to access the results in two files:
 
-    my_test.fetch_results(key)
+    results-date and resources-date
+    
+Which date refers to the current system date (dd-mm-yyyy).
 
-or
-
-    results = gt.poll_state_request(key, my_test.test_id)
-
-When test is completed you able to access next data in the files:
-
-    results-date = pagespeed_score, yslow_score, page_bytes, page_load_time, page_elements
-    resources-date= urls to screenshot, har, pagespeed_url, pagespeed_files, yslow_url,  report_pdf, report_pdf_full
-   
+Example
+    
+    results-8-1-2016:
+    site:google pagespeed_score:96 yslow_score:98 page_load_time:3435 page_bytes:358863 page_elements:12 
+    
+    resources-8-1-2016
+    site:google screenshot:https://gtmetrix.com/api/0.1/test/StLBexrb/screenshot har:https://gtmetrix.com/api/0.1/test/StLBexrb/har pagespeed_url:https://gtmetrix.com/api/0.1/test/StLBexrb/pagespeed pagespeed_files:https://gtmetrix.com/api/0.1/test/StLBexrb/pagespeed-files yslow_url:https://gtmetrix.com/api/0.1/test/StLBexrb/yslow  report_pdf:https://gtmetrix.com/api/0.1/test/StLBexrb/report-pdf report_pdf_full:https://gtmetrix.com/api/0.1/test/StLBexrb/report-pdf?full=1  
 
 
 List of available params and response attributes you can find at http://gtmetrix.com/api/
@@ -72,22 +71,6 @@ Too many concurrent requests from your IP
     
     GTmetrixManyConcurrentRequests
     
-Example:
-
-    from gtmetrix import *
-
-    gt = GTmetrixInterface('your@email.com', 'api-key')
-
-    try:
-        my_test = gt.start_test('http://google.com')
-    except GTmetrixInvalidTestRequest:
-        print 'Something goes wrong'
-
-    try:
-        results = gt.poll_state_request(my_test.test_id)
-    except GTmetrixTestNotFound:
-        raise Http404
-
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aisayko/python-gtmetrix/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
